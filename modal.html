@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="modal.js"></script>
+    <title>Modal</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+
+      body {
+        margin: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <g4-modal>
+      <h1 slot="title">Please Confirm</h1>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat vel
+        facilis vitae illum aperiam iste dolore blanditiis unde amet
+        reprehenderit.
+      </p>
+    </g4-modal>
+
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro, sunt.
+    </p>
+
+    <button>Show details</button>
+  </body>
+
+  <script>
+    const confirmButton = document.querySelector("button");
+    const modal = document.querySelector("g4-modal");
+
+    // Custom events dispatched by our component
+    modal.addEventListener("confirm", () => {
+      console.log("Confirmed...");
+    });
+
+    modal.addEventListener("cancel", () => {
+      console.log("Cancelled...");
+    });
+
+    confirmButton.addEventListener("click", () => {
+      if (!modal.isOpen) {
+        // Custom action that can be performed on this component
+        modal.open();
+        console.log("opening...");
+      }
+    });
+  </script>
+</html>

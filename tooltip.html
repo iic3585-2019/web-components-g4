@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="./tooltip.js"></script>
+    <title>Tooltip</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        --color-primary: rgb(155, 217, 238);
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      <g4-tooltip class="important" text="This is extra information">
+        <span class="highlight">Hover</span>
+      </g4-tooltip>
+      here to get more info!
+    </p>
+
+    <!-- here we show the element with default behavior -->
+    <g4-tooltip></g4-tooltip>
+  </body>
+</html>

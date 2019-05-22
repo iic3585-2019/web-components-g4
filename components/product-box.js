@@ -61,8 +61,8 @@
         background: blue;
         color: white;
         font-weight: bold;
-        z-index: 5;
-        padding: 2px 3px;
+        
+        padding: 2px 4px;
         border-radius: 7px;
       }
 
@@ -123,7 +123,7 @@
       objPrice.setAttribute('offer', '');
 
       const objDiscount = this.box.querySelector('.discount-box');
-      objDiscount.innerHTML = this.discount*100 + '%';
+      objDiscount.innerHTML = '-' + this.discount*100 + '%';
     }
 
     get discount(){

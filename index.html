@@ -3,9 +3,26 @@
     <title>Tests templates</title>
     <meta charset="utf-8" />
     <script src="./star-rating.js"></script>
+    <script src="./product-box.js"></script>
   </head>
 
   <body>
     <star-rating length="6"></star-rating>
+    <br>
+    <star-rating length="0"></star-rating>
+    <br>
+    <star-rating length="1"></star-rating>
+    <br>
+    <div>
+      <product-box name="Smartphone" price=50000 discount=0.5 image="smartphone_1.jpg"></product-box>
+      
+      <product-box name="Test" price=50000 image="smartphone_1.jpg">
+        <star-rating></star-rating>
+      </product-box>
+
+      <product-box name="Smartphone" price=50000 discount=0.5 image="smartphone_1.jpg">
+        <star-rating></star-rating>
+      </product-box>
+    </span>
   </body>
 </html>

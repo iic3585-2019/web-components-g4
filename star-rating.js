@@ -64,7 +64,7 @@
           this._changeState();
           break;
       }
-    };
+    }
     
   }
 
@@ -74,7 +74,6 @@
     <span/>
     <style>
       span {
-        cursor: default;
         user-select: none;
       }
     </style>

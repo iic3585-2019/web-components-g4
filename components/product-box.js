@@ -127,14 +127,16 @@
 
     set discount(val){
       this._discount = parseFloat(val);
-      const discount_price = this.box.querySelector('.discount');
-      discount_price.innerHTML = this._to_price((1 - val)* this.price);
+      if(val > 0){
+        const discount_price = this.box.querySelector('.discount');
+        discount_price.innerHTML = this._to_price((1 - val)* this.price);
 
-      const objPrice = this.box.querySelector('.price');
-      objPrice.setAttribute('offer', '');
+        const objPrice = this.box.querySelector('.price');
+        objPrice.setAttribute('offer', '');
 
-      const objDiscount = this.box.querySelector('.discount-box');
-      objDiscount.innerHTML = '-' + this.discount*100 + '%';
+        const objDiscount = this.box.querySelector('.discount-box');
+        objDiscount.innerHTML = '-' + this.discount*100 + '%';
+      }
     }
 
     get discount(){

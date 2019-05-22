@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>Almazon</title>
+    <meta charset="utf-8" />
+    <script src="./components/star-rating.js"></script>
+    <script src="./components/product-box.js"></script>
+    <script src="./components/navbar/dropdown.js"></script>
+    <script src="./components/navbar/item.js"></script>
+    <script src="./components/navbar/navbar.js"></script>
+</head>
+
+<body>
+    <basic-navbar>
+        <item-navbar title="Home" link="./index.html"></item-navbar>
+        <dropdown-navbar title="Celulares">
+            <item-navbar title="iPhone" link="./iphone.html"></item-navbar>
+            <item-navbar title="Smartphone" link="./smartphone.html"></item-navbar>
+        </dropdown-navbar>
+        <dropdown-navbar title="Consolas">
+            <item-navbar title="Switch" link="./switch.html"></item-navbar>
+        </dropdown-navbar>
+    </basic-navbar>
+    <br>
+    <div>
+        <product-box name="iPhone" price=50000 discount=0.5 image="images/smartphone_3.jpg">
+            <star-rating length="4"></star-rating>
+        </product-box>
+    </div>
+</body>
+
+</html>

@@ -1,5 +1,7 @@
 ﻿# Instalación/Ejecutar
 Este código no requiere ningun tipo de instalación previa: solo abrir `index.html` con Google Chrome.
+
+También puede verse online (gracias a GitHub Pages) en el siguiente enlace: https://iic3585-2019.github.io/web-components-g4/index.html
 # Componentes
 ## `star-rating`
 Atributos: 

@@ -68,6 +68,11 @@ class Modal extends HTMLElement {
 
       #actions button {
         margin: 0 0.25rem;
+
+      }
+
+      slot[name=switch] {
+        cursor: zoom-in;
       }
     </style>  
     

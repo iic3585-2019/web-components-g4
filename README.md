@@ -15,9 +15,8 @@ Atributos:
 
 Además, la componente tiene un slot extra para otro componente en su interior (html normal o custom, como `star-rating`)
 
-## `basic-navbar`
-Se trata de una barra de navegación que se sitúa en el borde superior de la pantalla.
-Cuenta con un slot para recibir componentes de tipo `item-navbar` o `dropdown-navbar`.
+## `almazon-navbar`
+Se trata de una barra de navegación que se sitúa en el borde superior de la pantalla. Cuenta con items y dropdowns hardcodeados, para insertarlos directamente en las páginas.
 
 
 ## `dropdown-navbar`

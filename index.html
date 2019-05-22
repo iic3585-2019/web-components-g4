@@ -8,11 +8,20 @@
   <script src="./components/modal.js"></script>
   <script src="./components/navbar/dropdown.js"></script>
   <script src="./components/navbar/item.js"></script>
-  <script src="./components/navbar/navbar.js"></script>
+  <script src="./components/navbar/basic-navbar.js"></script>
 </head>
 
 <body>
-  <almazon-navbar></almazon-navbar>
+  <basic-navbar>
+    <item-navbar title="Home" link="./index.html"></item-navbar>
+  <dropdown-navbar title="Celulares">
+    <item-navbar title="iPhone" link="./iphone.html"></item-navbar>
+    <item-navbar title="Smartphone" link="./smartphone.html"></item-navbar>
+  </dropdown-navbar>
+  <dropdown-navbar title="Consolas">
+    <item-navbar title="Switch" link="./switch.html"></item-navbar>
+  </dropdown-navbar>
+  </basic-navbar>
   <br>
   <div>
 

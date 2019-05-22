@@ -28,3 +28,10 @@ Cuenta con un slot para recibir componentes de tipo `item-navbar`, los cuales se
 Atributos:
 - `title`: Indica el texto que tendrá el item en la barra de navegación.
 - `link`: Indica a que link redirige el item al hacerle click.
+
+
+## `g4-modal`
+
+Esta componente tiene 3 slots, 2 de ellas con nombres/posiciones guardadas que tienen funciones específicas. El elemento que se ingrese que no tenga `slot={}`, estará en el interior del componente
+- `title`: Título que tendrá el modal
+- `switch`: Elemento que activará el modal

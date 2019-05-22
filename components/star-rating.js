@@ -71,7 +71,9 @@
 
   template_rating = document.createElement('template');
   template_rating.innerHTML = `
-    <span/>
+    <span>
+    </span>
+    
     <style>
       span {
         user-select: none;
@@ -94,6 +96,11 @@
       this.length = 5;
       if(this.hasAttribute("length")){
         this.length = this.getAttribute("length")
+      } else{
+        this.setAttribute("length", 5)
+      }
+      if(!this.hasAttribute("value")){
+        this.setAttribute("value", 0);
       }
       for (let i = 0; i < this.length; i++) {
         const starItem = document.createElement('star-icon');
@@ -108,6 +115,7 @@
       const index = event.detail.index;
       const state = event.detail.state;
       this.rating = index+1;
+      this.setAttribute("value", this.rating);
       if(state) {
         for (let i = 0; i < this.length; i++) {
           if(i <= index ) {

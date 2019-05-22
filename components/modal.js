@@ -85,11 +85,10 @@ class Modal extends HTMLElement {
         </slot>
       </section>
 
-      <section id="actions">
-        <button id="cancel-btn">Cancel</button>
-        <button id="confirm-btn">Okay</button>
-      </section>
+      
     </div>
+
+    <slot name="switch"></slot>
     `;
 
     // This is just in case we need to access the content of our slots
@@ -106,8 +105,23 @@ class Modal extends HTMLElement {
 
     backdrop.addEventListener("click", this._cancel.bind(this));
 
-    cancelButton.addEventListener("click", this._cancel.bind(this));
-    confirmButton.addEventListener("click", this._confirm.bind(this));
+    // cancelButton.addEventListener("click", this._cancel.bind(this));
+    // confirmButton.addEventListener("click", this._confirm.bind(this));
+  }
+
+  connectedCallback(){
+    if(this.shadowRoot.querySelector('slot[name=switch]')){
+      
+      const action = this.shadowRoot.querySelector('slot[name=switch]');
+      
+      action.addEventListener("click", () => {
+        if (!this.isOpen) {
+          // Custom action that can be performed on this component
+          this.open();
+          console.log("opening...");
+        }
+      });
+    }
   }
 
   attributeChangedCallback(name, oldValue, newValue) {

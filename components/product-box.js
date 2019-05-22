@@ -20,7 +20,7 @@
         position: relative;
       }
 
-      img {
+      img:not([extended]) {
         height: 100px;
         margin: 5px 0px;
       }
@@ -66,10 +66,19 @@
         border-radius: 7px;
       }
 
+      img[extended]{
+        height: 300px;
+      }
+
     </style>
     <div class="container">
       <div class="discount-box"></div>
-      <img src="https://sainfoinc.com/wp-content/uploads/2018/02/image-not-available.jpg">
+
+      <g4-modal>
+        <h1 slot="title"></h1>
+        <img slot="switch" src="https://sainfoinc.com/wp-content/uploads/2018/02/image-not-available.jpg">
+        <img extended src="https://sainfoinc.com/wp-content/uploads/2018/02/image-not-available.jpg">  
+      </g4-modal>
       
       <div class="name">--</div>
       <div class="price"></div>
@@ -93,7 +102,7 @@
       const formatter = new Intl.NumberFormat('CL', {
         style: 'currency',
         currency: 'CLP',
-        minimumFractionDigits: 0
+        minimumFractionDigits: 0,
       })
       return formatter.format(val)
     }
@@ -101,6 +110,8 @@
     set name(val){
       const obj = this.box.querySelector('.name');
       obj.innerHTML = val;
+      const title = this.box.querySelector('h1[slot=title]')
+      title.innerHTML = val;
     }
 
     set price(val){
@@ -133,6 +144,9 @@
     set image(src){
       const img = this.box.querySelector('img');
       img.setAttribute('src', src);
+
+      const ext = this.box.querySelector('img[extended]');
+      ext.setAttribute('src', src)
     }
 
     get image(){

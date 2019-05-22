@@ -9,19 +9,25 @@
         width: 150px;
         border-style: solid;
         border-width: 1px;
-        margin: 2px;
+        border-radius: 6px;
+        -webkit-box-shadow: -4px 4px 5px 0px rgba(0,0,0,0.75);
+        margin: 3px 2px;
         padding: 5px;
         display: inline-block;
-        vertical-align:top;
+        vertical-align: top;
         text-align: center;
+        font-family: Lato,sans-serif;
+        position: relative;
       }
 
       img {
         height: 100px;
+        margin: 5px 0px;
       }
 
       .price {
         font-size: 18px;
+        margin: 0px 0px 2px;
       }
 
       [offer] {
@@ -38,18 +44,39 @@
         font-size: 20px;
       }
 
-      star-rating {
-        vertical-align: bottom;
+      .star {
+        position: absolute;
+        bottom: 2;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+      }
+
+      .discount-box:not(:empty) {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: blue;
+        color: white;
+        font-weight: bold;
+        z-index: 5;
+        padding: 2px 3px;
+        border-radius: 7px;
       }
 
     </style>
     <div class="container">
       <div class="discount-box"></div>
-      <img>
-      <div class="name"></div>
+      <img src="https://sainfoinc.com/wp-content/uploads/2018/02/image-not-available.jpg">
+      
+      <div class="name">--</div>
       <div class="price"></div>
       <div class="discount price"></div>
-      <slot></slot>
+      <div class="star">
+        <slot></slot>
+      </div>
     </div>
   `;
 
@@ -62,48 +89,73 @@
       
     }
 
-    connectedCallback() {
-      if(this.hasAttribute('name')) {
-        this.name = this.getAttribute('name');
-        const name = this.box.querySelector('.name');
-        name.innerHTML = this.name;
-      }
-      if(this.hasAttribute('price')) {
-        this.price = parseInt(this.getAttribute('price'));
-        const price = this.box.querySelector('.price');
-        price.innerHTML = '$'+this.price;
-      }
-      if(this.hasAttribute('discount')) {
-        this.discount = parseFloat(this.getAttribute('discount'));
-        const discount_price = this.box.querySelector('.discount');
-        discount_price.innerHTML = '$'+this.discount * this.price;
-        const price = this.box.querySelector('.price');
-        price.setAttribute('offer', '');
-        
-      }
-      if(this.hasAttribute('image')) {
-        this.image= this.getAttribute('image');
-        const img = this.box.querySelector('img');
-        img.setAttribute('src', this.image);
-        // img.setAttribute('height', 100);      
-      }
+    _to_price(val){
+      const formatter = new Intl.NumberFormat('CL', {
+        style: 'currency',
+        currency: 'CLP',
+        minimumFractionDigits: 0
+      })
+      return formatter.format(val)
+    }
 
-      
+    set name(val){
+      const obj = this.box.querySelector('.name');
+      obj.innerHTML = val;
+    }
+
+    set price(val){
+      this._price = parseInt(val);
+      const obj = this.box.querySelector('.price');
+      obj.innerHTML = this._to_price(val);
+    }
+
+    get price(){
+      return this._price;
     }
 
 
+    set discount(val){
+      this._discount = parseFloat(val);
+      const discount_price = this.box.querySelector('.discount');
+      discount_price.innerHTML = this._to_price((1 - val)* this.price);
+
+      const objPrice = this.box.querySelector('.price');
+      objPrice.setAttribute('offer', '');
+
+      const objDiscount = this.box.querySelector('.discount-box');
+      objDiscount.innerHTML = this.discount*100 + '%';
+    }
+
+    get discount(){
+      return this._discount
+    }
+
+    set image(src){
+      const img = this.box.querySelector('img');
+      img.setAttribute('src', src);
+    }
+
+    get image(){
+      return this.box.getAttribute('image');
+    }
+
+    static get observedAttributes() {
+      return ['name', 'image', 'discount', 'price'];
+    }
+
     attributeChangedCallback(name, oldValue, newValue) {
-      console.log("here")
       switch(name){
-        case 'name':
-          this.name = newValue;
-          break;
-        case 'price':
-          this.price = parseInt(newValue)
-          break;
-        case 'discount':
-          this.discount = parseFloat(newValue)
-          break;
+          case 'name':
+            this.name = newValue;
+            break;
+          case 'image':
+            this.image = newValue;
+            break;
+          case 'price':
+            this.price = newValue;
+            break;
+          case 'discount':
+            this.discount = newValue
       }
     }
 

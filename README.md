@@ -38,16 +38,14 @@ Además, la componente tiene un slot extra para otro componente en su interior (
   </product-box> 
 ```
 
-## `basic-navbar`
-Se trata de una barra de navegación que se sitúa en el borde superior de la pantalla. Cuenta con un slot para recibir dropdowns o items.
+## `item-navbar`
+Componente para un enlace en la barra de navegación o dropdown. Cambia de color al pasar el mouse por encima.
+Atributos:
+- `title`: Indica el texto que tendrá el item en la barra de navegación.
+- `link`: Indica a que link redirige el item al hacerle click.
 
 ```
-  <basic-navbar>
-    <item-navbar title="Home" link="./index.html"></item-navbar>
-    <dropdown-navbar title="Consolas">
-      <item-navbar title="Switch" link="./switch.html"></item-navbar>
-    </dropdown-navbar>
-  </basic-navbar> 
+  <item-navbar title="Home" link="./index.html"></item-navbar>
 ```
 
 ## `dropdown-navbar`
@@ -64,14 +62,16 @@ Cuenta con un slot para recibir componentes de tipo `item-navbar`, los cuales se
   </dropdown-navbar>
 ```
 
-## `item-navbar`
-Componente para un enlace en la barra de navegación o dropdown. Cambia de color al pasar el mouse por encima.
-Atributos:
-- `title`: Indica el texto que tendrá el item en la barra de navegación.
-- `link`: Indica a que link redirige el item al hacerle click.
+## `basic-navbar`
+Se trata de una barra de navegación que se sitúa en el borde superior de la pantalla. Cuenta con un slot para recibir dropdowns o items.
 
 ```
-  <item-navbar title="Home" link="./index.html"></item-navbar>
+  <basic-navbar>
+    <item-navbar title="Home" link="./index.html"></item-navbar>
+    <dropdown-navbar title="Consolas">
+      <item-navbar title="Switch" link="./switch.html"></item-navbar>
+    </dropdown-navbar>
+  </basic-navbar> 
 ```
 
 ## `almazon-navbar`

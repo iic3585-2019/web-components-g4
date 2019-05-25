@@ -38,21 +38,48 @@ Además, la componente tiene un slot extra para otro componente en su interior (
   </product-box> 
 ```
 
-## `almazon-navbar`
-Se trata de una barra de navegación que se sitúa en el borde superior de la pantalla. Cuenta con items y dropdowns hardcodeados, para insertarlos directamente en las páginas.
+## `basic-navbar`
+Se trata de una barra de navegación que se sitúa en el borde superior de la pantalla. Cuenta con un slot para recibir dropdowns o items.
 
+```
+  <basic-navbar>
+    <item-navbar title="Home" link="./index.html"></item-navbar>
+    <dropdown-navbar title="Consolas">
+      <item-navbar title="Switch" link="./switch.html"></item-navbar>
+    </dropdown-navbar>
+  </basic-navbar> 
+```
 
 ## `dropdown-navbar`
+Componente de tipo menú desplegable, para usar en la barra de navegación.
 Atributos:
 - `title`: Indica el texto que tendrá en dropdown en la barra de navegación.
 
 Cuenta con un slot para recibir componentes de tipo `item-navbar`, los cuales serán desplegados cuando se situe el mouse sobre el título del dropdown.
 
+```
+  <dropdown-navbar title="Celulares">
+    <item-navbar title="iPhone" link="./iphone.html"></item-navbar>
+    <item-navbar title="Smartphone" link="./smartphone.html"></item-navbar>
+  </dropdown-navbar>
+```
+
 ## `item-navbar`
+Componente para un enlace en la barra de navegación o dropdown. Cambia de color al pasar el mouse por encima.
 Atributos:
 - `title`: Indica el texto que tendrá el item en la barra de navegación.
 - `link`: Indica a que link redirige el item al hacerle click.
 
+```
+  <item-navbar title="Home" link="./index.html"></item-navbar>
+```
+
+## `almazon-navbar`
+Se trata de una barra de navegación customizada que se sitúa en el borde superior de la pantalla. Cuenta con items y dropdowns hardcodeados, para ser utilizada directamente en las páginas de Almazon.
+
+```
+  <almazon-navbar></almazon-navbar>
+```
 
 ## `g4-modal`
 
